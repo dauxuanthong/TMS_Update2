@@ -1,0 +1,23 @@
+﻿@model TMS_Update2.Models.ApplicationUser
+@{
+	ViewBag.Title = "ChangePass";
+}
+
+<h2>Change password</h2>
+@using (Html.BeginForm("ChangePass", "Admins", FormMethod.Post))
+{
+	@Html.HiddenFor(p => p.Id)
+	<div class="form-group">
+		@Html.AntiForgeryToken()
+		@*.
+		@Html.LabelFor(p => p.UserName)
+		@Html.EditorFor(p => p.UserName, new { htmlAttributes = new { @class = "form-control" } })
+		@Html.ValidationMessageFor(p => p.UserName, "", new { @class = "text-danger" })
+		.*@
+		@*@Html.LabelFor(p => p.PhoneNumber)*@
+		<h3>Please input new password</h3>
+		@Html.EditorFor(p => p.PhoneNumber, new { htmlAttributes = new { @class = "form-control" } })
+		@Html.ValidationMessageFor(p => p.PhoneNumber, "", new { @class = "text-danger" })
+	</div>
+	<button type="submit" class="btn btn-primary">Change pass</button>
+}
